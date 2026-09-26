@@ -25,4 +25,6 @@ jobs:
         with:
           name: adex-ai-apk
           path: bin/*.apk
+[![Build Android APK](https://github.com/niyi4113-source/adex-ai-app/actions/workflows/build.yml/badge.svg)](https://github.com/niyi4113-source/adex-ai-app/actions/workflows/build.yml)
+
           
