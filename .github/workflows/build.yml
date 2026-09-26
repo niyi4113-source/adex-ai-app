@@ -1,7 +1,28 @@
-- name: Build APK with Buildozer
-  run: |
-    buildozer -v android debug
-    - name: Build APK with Buildozer
-  run: |
-    yes y | buildozer -v android debug
-    
+name: Build Android APK
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build with Buildozer
+        uses: ArtemSBulgakov/buildozer-action@v1
+        id: buildozer
+        with:
+          command: android debug
+          buildozer_version: master
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: adex-ai-apk
+          path: bin/*.apk
+          
